@@ -3,7 +3,8 @@ Meteor.onConnection(function(connection) {
 		id: connection.id,
 		address: connection.clientAddress,
 		userAgent: connection.httpHeaders['user-agent'],
-		startDate: new Date()
+		startDate: new Date(),
+		events: []
 	})
 
 	connection.onClose(function() {
@@ -17,4 +18,13 @@ Accounts.onLogin(function(attempt) {
 
 Meteor.startup(function() {
 	Analytics.connections.remove({})
+})
+
+Meteor.methods({
+	"analytics.blurWindow"() {
+		Analytics.connections.update({id: this.connection.id}, {$push: {events: {date: new Date(), name: "blur"}}})
+	},
+	"analytics.focusWindow"() {
+		Analytics.connections.update({id: this.connection.id}, {$push: {events: {date: new Date(), name: "focus"}}})
+	}
 })

@@ -13,8 +13,9 @@ Package.describe({
 Package.onUse(function(api) {
 	api.versionsFrom('1.2.1');
 	api.use(['ecmascript', 'mongo', 'accounts-base', 'faisalman:ua-parser-js@0.7.9']);
-	api.addFiles('collections.js');
+	api.addFiles('Collections.js');
 	api.addFiles('Connection.js', 'server');
+	api.addFiles('Events.js', 'client');
 
 	api.export("Analytics");
 });
