@@ -1,13 +1,13 @@
 Package.describe({
 	name: 'devian:analytics',
-	version: '0.0.4',
+	version: '0.0.5',
 	// Brief, one-line summary of the package.
 	summary: 'Simple real-time analytics for free',
 	// URL to the Git repository containing the source code for this package.
 	git: 'https://github.com/Dev1an/Analytics.git',
 	// By default, Meteor will default to using README.md for documentation.
 	// To avoid submitting documentation, set this field to null.
-	documentation: null
+	documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
