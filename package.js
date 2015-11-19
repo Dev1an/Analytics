@@ -1,6 +1,6 @@
 Package.describe({
 	name: 'devian:analytics',
-	version: '0.0.9',
+	version: '0.0.10',
 	// Brief, one-line summary of the package.
 	summary: 'Simple real-time analytics for free',
 	// URL to the Git repository containing the source code for this package.
@@ -9,6 +9,10 @@ Package.describe({
 	// To avoid submitting documentation, set this field to null.
 	documentation: 'README.md'
 });
+
+Npm.depends({
+	"geoip-lite": "1.1.6"
+})
 
 Package.onUse(function(api) {
 	api.versionsFrom('1.2.1');

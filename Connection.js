@@ -1,8 +1,11 @@
+const geoIp = Npm.require('geoip-lite')
+
 Meteor.onConnection(function(connection) {
 	const record = Analytics.connections.insert({
 		id: connection.id,
 		address: connection.clientAddress,
 		userAgent: connection.httpHeaders['user-agent'],
+		geoData: geoIp.lookup(connection.clientAddress),
 		startDate: new Date(),
 		events: []
 	})
