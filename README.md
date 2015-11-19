@@ -15,6 +15,6 @@ A connection contains information about the socket along with some additional in
 - **userAgent**: String <br> The user agent that was sent un the HTTP header
 - **startDate**: Date <br> The moment the visitor initiated the web socket connection
 - **endDate**: Date <br> The moment the visitor closed the web socket
-- **events**: [Event] <br> Client-side events like 'window.blur' and 'widow.focus'. An Event looks like this
+- **events**: [Event] <br> An array containing client-side events like 'window.blur' and 'widow.focus'. An Event looks like this
   - **name**: String <br> Event name (for example: 'blur' or 'focus')
   - **data**: Date <br> The moment the event was triggered
