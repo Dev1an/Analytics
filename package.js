@@ -1,6 +1,6 @@
 Package.describe({
 	name: 'devian:analytics',
-	version: '0.0.6',
+	version: '0.0.7',
 	// Brief, one-line summary of the package.
 	summary: 'Simple real-time analytics for free',
 	// URL to the Git repository containing the source code for this package.
