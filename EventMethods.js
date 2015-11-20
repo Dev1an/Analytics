@@ -1,7 +1,11 @@
 function pushEvent(name, data) {
-	const event = {name, date: new Date()}
+	const event = {
+		name,
+		connectionId: this.connection.id,
+		date: new Date()
+	}
 	if (typeof data != 'undefined') event.data = data
-	Analytics.connections.update({id: this.connection.id}, {$push: {events: event}})
+	Events.insert(event)
 }
 
 Meteor.methods({

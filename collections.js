@@ -5,13 +5,30 @@ Analytics = {
 		transform(connection) {
 			connection.user = Meteor.users.findOne(connection.userId)
 			connection.inFocus = function() {
-				if (connection.endDate != undefined) return false
-				for (var i = connection.events.length-1; i>=0; --i)
-					if (connection.events[i].name == "window.focus" || connection.events[i].name == "window.blur")
-						return connection.events[i].name == "window.focus"
-				return true
+				if (connection.hasOwnProperty('endDate')) return false
+				const lastEvent = Analytics.events.findOne({
+					// Query selector
+					connectionId: connection.id,
+					name: {$in: ['window.blur', 'window.focus']}
+				}, {
+					// Options
+					fields: {name: 1},
+					sort: {date: -1},
+					limit: 1
+				})
+				if (lastEvent && lastEvent.name == 'window.blur') return false
+				else return true
 			}
+
+			connection.eventsCursor = Analytics.events.find({connectionId: connection.id})
+			Object.defineProperty(connection, 'events', {
+				get() { return this.eventsCursor.fetch(); }
+			})
 			return connection
 		}
-	})
+	}),
+	events: new Mongo.Collection('analyticsEvents')
 };
+
+Events = Analytics.events
+Connections = Analytics.connections

@@ -11,7 +11,7 @@ See it in action on [simpleanalytics.meteor](http://simpleanalytics.meteor.com)
 When the package is added every DDP connection will be logged in a mongo collection: `Analytics.connections`.
 A connection contains information about the socket along with some additional information.
 - **id**: String  
-  The [meteor connection id](http://docs.meteor.com/#/full/meteor_onconnection)
+The [meteor connection id](http://docs.meteor.com/#/full/meteor_onconnection)
 - **address**: String  
   The visitor's IP address
 - **geoData**: Object  
@@ -24,10 +24,13 @@ A connection contains information about the socket along with some additional in
     This is the full city name
   - **ll**: [Number]  
     The latitude and longitude of the city
-- **userAgent**: String
+- **userAgent**: String  
   The user agent that was sent un the HTTP header
 - **startDate**: Date <br> The moment the visitor initiated the web socket connection
 - **endDate**: Date <br> The moment the visitor closed the web socket
 - **events**: [Event] <br> An array containing client-side events like 'window.blur' and 'widow.focus'. An Event looks like this
   - **name**: String <br> Event name (for example: 'blur' or 'focus')
-  - **data**: Date <br> The moment the event was triggered
+  - **date**: Date <br> The moment the event was triggered
+  - **data**: Object *optional* <br> Some data about the event
+
+The events array is a lazy loaded query on the `Analytics.events` collection. If you want a reactive datasource you should use the `eventsCursor` property of a connection, this returns a mongo cursor to the same data.

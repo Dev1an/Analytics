@@ -1,3 +1,7 @@
+## v0.1.1
+
+* The events are now stored in a separate Mongo collection instead of a nested array in the Connections collection.
+
 ## v0.1.0
 
 * Router support: client-side route changes are now logged as an Event in the events array of a connection.
