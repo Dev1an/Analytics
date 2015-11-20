@@ -1,6 +1,6 @@
 Package.describe({
 	name: 'devian:analytics',
-	version: '0.0.12',
+	version: '0.0.13',
 	summary: 'Simple real-time analytics for free',
 	git: 'https://github.com/Dev1an/Analytics.git',
 	documentation: 'README.md'
@@ -12,9 +12,18 @@ Npm.depends({
 
 Package.onUse(function(api) {
 	api.versionsFrom('1.2.1');
-	api.use(['ecmascript', 'mongo', 'accounts-base', 'faisalman:ua-parser-js@0.7.9']);
+	api.use([
+		'ecmascript',
+		'mongo',
+		'accounts-base',
+		'check',
+
+		'faisalman:ua-parser-js@0.7.9',
+		'kadira:flow-router@2.9.0'
+	]);
+
 	api.addFiles('Collections.js');
-	api.addFiles('Connection.js', 'server');
+	api.addFiles(['Connection.js', 'EventMethods.js'], 'server');
 	api.addFiles('Events.js', 'client');
 
 	api.export("Analytics");

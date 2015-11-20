@@ -23,12 +23,3 @@ Meteor.startup(function() {
 	// Handle inconsistencies
 	Analytics.connections.update({endDate: {$exists: false}}, {$set: {endDate: undefined}})
 })
-
-Meteor.methods({
-	"analytics.blurWindow"() {
-		Analytics.connections.update({id: this.connection.id}, {$push: {events: {date: new Date(), name: "window.blur"}}})
-	},
-	"analytics.focusWindow"() {
-		Analytics.connections.update({id: this.connection.id}, {$push: {events: {date: new Date(), name: "window.focus"}}})
-	}
-})

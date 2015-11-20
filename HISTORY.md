@@ -1,3 +1,7 @@
+## v0.1.0
+
+* Router support: client-side route changes are now logged as an Event in the events array of a connection.
+
 ## v0.0.12
 
 * The connection collection is now persistent. Database inconsistencies are handled with on startup.
