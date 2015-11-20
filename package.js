@@ -1,6 +1,6 @@
 Package.describe({
 	name: 'devian:analytics',
-	version: '0.0.11',
+	version: '0.0.12',
 	summary: 'Simple real-time analytics for free',
 	git: 'https://github.com/Dev1an/Analytics.git',
 	documentation: 'README.md'

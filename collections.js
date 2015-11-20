@@ -7,8 +7,8 @@ Analytics = {
 			connection.inFocus = function() {
 				if (connection.endDate != undefined) return false
 				for (var i = connection.events.length-1; i>=0; --i)
-					if (connection.events[i].name == "focus" || connection.events[i].name == "blur")
-						return connection.events[i].name == "focus"
+					if (connection.events[i].name == "window.focus" || connection.events[i].name == "window.blur")
+						return connection.events[i].name == "window.focus"
 				return true
 			}
 			return connection
