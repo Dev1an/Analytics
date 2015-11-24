@@ -1,3 +1,9 @@
+## v0.1.2
+
+* Add listener for SIGTERM event to log close events when the meteor application terminates. This should lead to less inconsistencies.
+* Add publication for analysed data
+* Add publication for raw data
+
 ## v0.1.1
 
 * The events are now stored in a separate Mongo collection instead of a nested array in the Connections collection.

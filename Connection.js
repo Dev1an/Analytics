@@ -11,7 +11,7 @@ Meteor.onConnection(function(connection) {
 	})
 
 	connection.onClose(function() {
-		Analytics.connections.update(record, {$set: {endDate: new Date()}});
+		Connections.update(record, {$set: {endDate: new Date()}})
 	})
 });
 
@@ -21,5 +21,10 @@ Accounts.onLogin(function(attempt) {
 
 Meteor.startup(function() {
 	// Handle inconsistencies
-	Analytics.connections.update({endDate: {$exists: false}}, {$set: {endDate: undefined}})
+	console.log('inconsistencies', Connections.update({endDate: {$exists: false}}, {$set: {endDate: undefined}}, {multi: true}))
 })
+
+process.on('SIGTERM', Meteor.bindEnvironment(function() {
+	console.log('closing', Connections.update({endDate: {$exists: false}}, {$set: {endDate: new Date()}}, {multi: true}))
+	process.exit(0)
+}))

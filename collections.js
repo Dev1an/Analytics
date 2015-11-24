@@ -27,8 +27,20 @@ Analytics = {
 			return connection
 		}
 	}),
-	events: new Mongo.Collection('analyticsEvents')
+	events: new Mongo.Collection('analyticsEvents'),
+	analysis: new Mongo.Collection('analytics', {
+		transform(analysis) {
+			analysis.pageViewsPerConnection = Math.round(analysis.pageViews / analysis.connectionCount * 10)/10
+			return analysis
+		}
+	})
 };
 
 Events = Analytics.events
 Connections = Analytics.connections
+
+if (Meteor.isServer) {
+	Meteor.publish('rawAnalyticsData', function() {
+		return [Events.find(), Connections.find()]
+	})
+}

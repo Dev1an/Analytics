@@ -1,6 +1,6 @@
 Package.describe({
 	name: 'devian:analytics',
-	version: '0.1.1',
+	version: '0.1.2',
 	summary: 'Simple real-time analytics for free',
 	git: 'https://github.com/Dev1an/Analytics.git',
 	documentation: 'README.md'
@@ -23,7 +23,7 @@ Package.onUse(function(api) {
 	]);
 
 	api.addFiles('Collections.js');
-	api.addFiles(['Connection.js', 'EventMethods.js'], 'server');
+	api.addFiles(['Connection.js', 'EventMethods.js', 'Analytics.js'], 'server');
 	api.addFiles('Events.js', 'client');
 
 	api.export("Analytics");
