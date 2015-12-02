@@ -1,3 +1,7 @@
+## v.next
+
+* Change publication names
+
 ## v0.1.2
 
 * Add listener for SIGTERM event to log close events when the meteor application terminates. This should lead to less inconsistencies.

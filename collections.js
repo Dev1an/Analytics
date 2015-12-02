@@ -40,7 +40,12 @@ Events = Analytics.events
 Connections = Analytics.connections
 
 if (Meteor.isServer) {
-	Meteor.publish('rawAnalyticsData', function() {
+	Meteor.publish('rawTrackingData', function() {
 		return [Events.find(), Connections.find()]
+	})
+	Meteor.publish('liveTrackingData', function() {
+		const now = new Date
+		now.setSeconds(now.getSeconds()-3)
+		return [Events.find({date: {$gte: now}}), Connections.find({endDate: {$exists: false}})]
 	})
 }
